@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
 
+import handleRegister from '../firebase_functions/firebase_register.js';
+
 const AuthenticationScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,6 +11,8 @@ const AuthenticationScreen = () => {
     // Handle login logic here
     console.log("EMAIL: " + email)
     console.log("PASSWORD: " + password)
+    handleRegister(email, password, "RBABY");
+
   };
 
   return (
