@@ -13,3 +13,5 @@
 1. npm install firebase
 2. npm install @react-native-firebase/app
 3. npm install @react-native-firebase/auth
+
+https://www.youtube.com/watch?v=VozPNrt-LfE - Good Resource
