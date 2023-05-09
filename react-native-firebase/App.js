@@ -22,7 +22,7 @@ const App = () => {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{ title: 'Log In' }}
+          options={{ title: 'Login' }}
         />
         <Stack.Screen
           name="Home"

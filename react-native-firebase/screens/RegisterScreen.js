@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
 
 import {auth} from '../firebase_setup/firebase.js'
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from '@firebase/auth'
+import { firestore } from "../firebase_setup/firebase.js"
+import { doc, setDoc } from "firebase/firestore"; 
 
 const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    //Eliminate existing state when reloaded
+    const unsubscribe = navigation.addListener('focus', () => {
+      setEmail('');
+      setPassword('');
+      setUserName('');
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   const handleRegisterClick = async () => {
     try {

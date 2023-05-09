@@ -7,7 +7,7 @@ const  HomeScreen = ({ navigation, route }) => {
 
   const handleLogoutClick = () => {
     handleLogout();
-    navigation.navigate('Register');
+    navigation.navigate('Login');
   };
 
   const { username } = route.params;

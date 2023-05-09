@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
 
 import {auth} from '../firebase_setup/firebase.js'
@@ -10,6 +10,15 @@ import { firestore } from "../firebase_setup/firebase.js"
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    //Eliminate existing state when reloaded
+    const unsubscribe = navigation.addListener('focus', () => {
+      setEmail('');
+      setPassword('');
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   const handleLoginClick = async () => {
     try {
